@@ -58,7 +58,12 @@ from cv_bridgee import CvBridge: Transfer image read by opencv "cv2" into one th
 ```
    MLX90640         RaspPi
 ------------------------------------
-     
+     Vin             3.3V
+     GND             GND
+     SDA             3
+     SCL             5
+```
+### b/
 
 
 
