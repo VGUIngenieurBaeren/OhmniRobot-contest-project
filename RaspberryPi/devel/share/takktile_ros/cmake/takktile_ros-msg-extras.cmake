@@ -1,0 +1,2 @@
+set(takktile_ros_MESSAGE_FILES "/home/tienanh/catkin_ws/src/raspberry_pi/msg/Contact.msg;/home/tienanh/catkin_ws/src/raspberry_pi/msg/Info.msg;/home/tienanh/catkin_ws/src/raspberry_pi/msg/Raw.msg;/home/tienanh/catkin_ws/src/raspberry_pi/msg/RobotiqTouch.msg;/home/tienanh/catkin_ws/src/raspberry_pi/msg/Touch.msg;/home/tienanh/catkin_ws/src/raspberry_pi/msg/HeartBeat.msg")
+set(takktile_ros_SERVICE_FILES "")
