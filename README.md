@@ -82,6 +82,7 @@ catkin_make
 ```
 cd ~/ros_ws/src/Vue
 npm install
+npm install echarts
 ```
 
 #### Compiles and hot-reloads for development
