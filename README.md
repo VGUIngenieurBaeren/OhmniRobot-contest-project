@@ -113,7 +113,7 @@ roslaunch heartbeat_ros ohmni_heartbeat.launch
 ```
 
 #### Expecting results:
-![Vue Server established_with heartbeat and SpO2 data]
+![Vue Server established_with heartbeat and SpO2 data](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/vue_server_with_HB_data.png)
 
 ### For launching face detection and thermal data collecting node:
 ```
