@@ -20,9 +20,8 @@ Raspberry Pi cam: To capture RGB images
 Raspberry Pi module: To process the nodes from MLX90640 module and ESP32
 
 ### b/ Middlewares
-Install Ubuntu 18.04 and  [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
+Install Ubuntu 18.04 and  [ROS Noetic](https://varhowto.com/install-ros-noetic-raspberry-pi-4/)
 
-Note: This project is intentionally written for ROS Melodic, but any other ROS version could be used, theorically. If you get into any problems, you can contact and ask for our help.
 
 ### c/ Softwares
 Lists of lib used and their main effect on the project:
@@ -37,7 +36,7 @@ numpy, scipy: Analyze thermal data collected from MLX90640 to calculate the faci
 
 from sensor_msgs.msg import Image: Initialize messages type published to rostopic
 
-from cv_bridgee import CvBridge: Transfer image read by opencv "cv2" into one that ROS can understand
+from cv_bridge import CvBridge: Transfer image read by opencv "cv2" into one that ROS can understand
 
 ## 2. Instuctions
 ### a/ Hardware connections:
@@ -63,11 +62,66 @@ from cv_bridgee import CvBridge: Transfer image read by opencv "cv2" into one th
      SDA             3
      SCL             5
 ```
-### b/
+### b/ Running the nodes
+Go to your workspace, if you had already created one, or follow [ROS Tutorial](http://wiki.ros.org/ROS/Tutorials) and create yourself a **ros_ws**.
 
+Git clone the repository:
+```
+cd ~/ros_ws/src
+git clone https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project.git
+```
 
+Then go back to your workspace and compile it:
+```
+cd ~/ros_ws
+catkin_make
+```
+### For hosting local Vue server
 
+#### Project setup
+```
+cd ~/ros_ws/src/Vue
+npm install
+```
 
+#### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+#### Compiles and minifies for production
+```
+npm run build
+```
+
+#### Lints and fixes files
+```
+npm run lint
+```
+
+#### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/)
+
+#### Expecting results:
+![Vue Server established_no data]
+
+### For launching Heart beat node to display SpO2 data collected
+
+#### Running Rosserial and Rosbridge
+```
+roslaunch heartbeat_ros ohmni_heartbeat.launch
+```
+
+#### Expecting results:
+![Vue Server established_with heartbeat and SpO2 data]
+
+### For launching face detection and thermal data collecting node:
+```
+
+```
+
+#### Expecting results:
+![Images in RGB and thermal region]
 
 
 
