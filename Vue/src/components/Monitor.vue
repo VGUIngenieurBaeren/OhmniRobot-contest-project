@@ -1,9 +1,9 @@
 <template>
   <!-- Begin Root Component -->
   <div id="monitor">
-    <div class="content">
+    <!-- <div class="content">
       <ThermalCam title="Thermal Camera"></ThermalCam>
-    </div>
+    </div> -->
     <div class="content">
       <HeartSen title="Heart Beat Sensor"></HeartSen>
     </div>
@@ -20,7 +20,7 @@ export default{
     title: String
   },
   components:{
-    ThermalCam,
+    //ThermalCam,
     HeartSen
   }
 }

@@ -40,10 +40,10 @@ ros::Publisher pub_heart("HeartBeat", &heartbeat_msg);
 
 
 // Uncomment for debug output to the Serial stream 115200 baud
-// #define DEBUG
+ #define DEBUG
 
 // Uncomment for serial print at 115200 baud
-// #define USE_SERIAL
+ #define USE_SERIAL
 
 // Uncomment if you want to include results returned
 // by the original MAXIM algorithm.
