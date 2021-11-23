@@ -115,7 +115,7 @@ roslaunch heartbeat_ros ohmni_heartbeat.launch
 
 ### For launching face detection and thermal data collecting node:
 ```
-
+rosrun thermalcam_ros face_temperature_publisher.py
 ```
 
 #### Expecting results:
