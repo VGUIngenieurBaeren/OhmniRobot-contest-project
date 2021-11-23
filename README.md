@@ -1,5 +1,5 @@
 # OhmniRobot-contest-project
-This is a project based on the technology of OhmniRobot, whose information can be found at [link]()
+This is a project based on the technology of OhmniRobot, whose information can be found at [OhmniLabs website](https://ohmnilabs.com/)
 
 Objective: To provide a local-hosted webpage, accessible by OhmniRobot via its available tools, displaying health information (body temperature and SpO2 ratio) of participants.
 
@@ -103,9 +103,6 @@ npm run lint
 #### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/)
 
-#### Expecting results:
-![Vue Server established_no data]
-
 ### For launching Heart beat node to display SpO2 data collected
 
 #### Running Rosserial and Rosbridge
@@ -122,7 +119,7 @@ roslaunch heartbeat_ros ohmni_heartbeat.launch
 ```
 
 #### Expecting results:
-![Images in RGB and thermal region]
+![Images in RGB and thermal region](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/RGB%20and%20thermal%20images.png)
 
 
 
