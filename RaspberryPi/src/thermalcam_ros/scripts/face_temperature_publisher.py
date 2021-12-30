@@ -75,7 +75,8 @@ def temp_calc(x, y, w, h):
     data_array = np.fliplr(np.reshape(frame, mlx_shape))   
     data_array = ndimage.zoom(data_array, mlx_interp_val)
 
-    face_temp = round(np.average(data_array[y:y + h, x:x + w]), 2)      # in picam, x is column, y is row
+    face_temp = round(np.max(data_array[y:y + round(h/3.3), x:x + w]), 2)      # in picam, x is column, y is row
+                                                                               # finding max temperature in the forehead's area
     return face_temp
 
 
@@ -102,7 +103,9 @@ def talker():
                 if count % 5 == 0:                              # detect every 5 frames 
                     img, bboxes = detector.findFaces(img)
                     for bbox in bboxes:
-                        x_min, y_min, width, height = bbox[0]           
+                        x_min, y_min, width, height = bbox[0]    
+                        y_min2 = y_min - round(height/3.3)          # location of the top of the forehead
+                        height2 = height + round(height/3.3)        # height of forehead
                         confidence = bbox[1]
 
                         cv.rectangle(img, (x_min, y_min), (x_min + width, y_min + height), (255, 0, 255), 1)
@@ -123,7 +126,7 @@ def talker():
                                 cv.FONT_HERSHEY_PLAIN, 1, (255, 0, 255), 1)
                         
                     
-                        t = temp_calc(x_min, y_min, width, height) 
+                        t = temp_calc(x_min, y_min2, width, height2) 
                         if t < 37.40:   
                             cv.putText(img, f'{t}', (x_min + width - 40, y_min - 5), cv.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
                         else:
