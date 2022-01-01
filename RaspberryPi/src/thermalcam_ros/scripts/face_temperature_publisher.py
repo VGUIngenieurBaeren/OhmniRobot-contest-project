@@ -100,7 +100,7 @@ def talker():
                 count = count + 1
                 img = cv.resize(img, dsize=(320, 240))
             
-                if count % 5 == 0:                              # detect every 5 frames 
+                if count % 11 == 0:                              # detect every 11 frames 
                     img, bboxes = detector.findFaces(img)
                     for bbox in bboxes:
                         x_min, y_min, width, height = bbox[0]    
