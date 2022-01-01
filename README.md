@@ -123,6 +123,31 @@ rosrun thermalcam_ros face_temperature_publisher.py
 
 
 
+### UPDATE 1.0 [01/01/2022]
+We have made some improvements on the thermal capturing node:
+```
+* Extend the bounding box contour [based on the Dev's faces references]
+* Capture only the maximum thermal data value of forehead region [circa 1/3.3 of the bounding box height]
+* Capture one frame only out of every 11 captured frames [11th frame]
+* Conduct optimal nominal distance for participants: 40-50cm away from the cameras
+```
+
+#### Updated results:
+Face without mask and glasses:
+![Face without mask and glasses](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20without%20glasses%20and%20mask.png)
+
+Face with mask only:
+![Face with only mask](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20only%20mask.png)
+
+Face with glasses:
+![Face with glasses](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20glasses.png)
+
+Face with glasses and mask:
+![Face with glasses and mask](https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20glasses%20and%20mask.png)
+
+
+
+
 
 
 
