@@ -133,7 +133,7 @@ def talker():
                             cv.putText(img, f'{t}', (x_min + width - 40, y_min - 5), cv.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
 
                         
-                        msg = bridge.cv2_to_imgmsg(img, "bgr8")			# convert to image message for ROS to publish
+                        msg = bridge.cv2_to_imgmsg(img, "bgr8")     	# convert to image message for ROS to publish
                         pub2.publish(msg)
                         rospy.loginfo(t)
                         pub1.publish(t)
