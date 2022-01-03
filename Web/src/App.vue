@@ -3,7 +3,7 @@
     <div id="app">
       <!-- Boxicons CDN Link -->
       <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-      <Dashboard title="Vue JS"></Dashboard>
+      <Dashboard title="Web Interface"></Dashboard>
     </div>
   </body>
 </template>
@@ -31,5 +31,7 @@ export default {
 }
 body{
   background: #1e1e1e;
+  width: 100%;
+  height: 100%;
 }
 </style>

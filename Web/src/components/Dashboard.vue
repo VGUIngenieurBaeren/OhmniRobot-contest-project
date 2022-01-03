@@ -49,6 +49,7 @@ export default {
   align-content: center;
   font-size: 30px;
   background: #2b2b2b;
+  min-width: 820px;
 }
 a{
   text-decoration: none;

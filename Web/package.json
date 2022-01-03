@@ -11,8 +11,7 @@
     "core-js": "^3.6.5",
     "roslib": "^1.1.0",
     "v-video-embed": "^1.0.8",
-    "vue": "^2.6.11",
-    "vue-echarts-v3": "^2.0.1"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

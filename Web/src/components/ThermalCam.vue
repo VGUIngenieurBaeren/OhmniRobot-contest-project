@@ -20,12 +20,13 @@ export default {
 .camera {
   margin: 0;
   padding: 0;
+  width: 50vw;
+  min-width: 500px;
 }
 .name {
   border-radius: 12px;
   margin: 20px;
   padding: 10px;
-  width: 95vw;
   font-size: 30px;
   background: #414141;
   color: lightgray;
