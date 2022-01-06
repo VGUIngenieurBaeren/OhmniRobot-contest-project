@@ -75,8 +75,7 @@ def temp_calc(x, y, w, h):
     data_array = np.fliplr(np.reshape(frame, mlx_shape))   
     data_array = ndimage.zoom(data_array, mlx_interp_val)
 
-    face_temp = round(np.max(data_array[y:y + round(h/3.3), x:x + w]), 2)      # in picam, x is column, y is row
-                                                                               # finding max temperature in the forehead's area
+    face_temp = round(np.max(data_array[y:y + round(h/3.3), x:x + w]), 2)      # in picam, x is column, y is row                         # finding max temperature in the forehead's area
     return face_temp
 
 
