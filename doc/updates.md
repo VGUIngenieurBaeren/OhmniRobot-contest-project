@@ -8,18 +8,21 @@ We have made some improvements on the thermal capturing node:
 ```
 
 ### Updated results:
-Face without mask and glasses:
+Face without mask or glasses:
 
-<img src="figures/Face without glasses and mask.png" width="640" height="400"/>
+<img src="https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20without%20glasses%20and%20mask.png" width="640" height="400"/>
+
 
 Face with only mask:
 
-<img src="figures/Face with only mask.png" width="640" height="400"/>
+<img src="https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20only%20mask.png" width="640" height="400"/>
+
 
 Face with glasses:
 
-<img src="figures/Face with glasses.png" width="640" height="400"/>
+<img src="https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20glasses.png" width="640" height="400"/>
+
 
 Face with glasses and mask:
 
-<img src="figures/Face with glasses and mask.png" width="640" height="400"/>
+<img src="https://github.com/VGUIngenieurBaeren/OhmniRobot-contest-project/blob/main/figures/Face%20with%20glasses%20and%20mask.png" width="640" height="400"/>
