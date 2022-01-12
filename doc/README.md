@@ -1,1 +1,1 @@
-[Hardware connections](./doc/Hardware connections)
+[Hardware connections](./Hardware connections.md)
