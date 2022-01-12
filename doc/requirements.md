@@ -1,4 +1,4 @@
-# a/ Hardware
+## a/ Hardwares
 MLX90640 module: To capture thermal image of participants
 
 MAX30102 module: To retrieve SpO2 ratio from participants
@@ -9,11 +9,11 @@ Raspberry Pi cam: To capture RGB images
 
 Raspberry Pi module: To process the nodes from MLX90640 module and ESP32
 
-### b/ Middlewares
+## b/ Middlewares
 Install Ubuntu 18.04 and  [ROS Noetic](https://varhowto.com/install-ros-noetic-raspberry-pi-4/)
 
 
-### c/ Softwares
+## c/ Softwares
 Lists of lib used and their main effect on the project:
 
 adafruit_mlx90640: Provide I2C connection between the MLX90640 module and our processor
