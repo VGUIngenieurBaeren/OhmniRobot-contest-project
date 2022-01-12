@@ -1,2 +1,3 @@
 # Manual
-[Hardware connections](./hard-con.md)
+- [Requirements](./requirements.md)
+- [Hardware connections](./hard-con.md)
