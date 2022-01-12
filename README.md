@@ -39,7 +39,7 @@ Let's begin!
 
 ## 4. Versions
 
-[Updates](./doc/updates.md)
+[>>> Click here <<<](./doc/updates.md)
 
 
 
