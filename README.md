@@ -16,7 +16,7 @@ Let's begin!
 | 3D-printed mount                                  | Designed for OhmniRobot            |
 | Web server                                        | Vue framework, designed            |
 | Display health data on web server                 | In progress                        |
-
+| Docker                                            | Inspired by OhmniRobot Docker      |
 
 ## 1. Requirements
 
@@ -31,7 +31,7 @@ Let's begin!
 
 [c/ Docker](./docker/README.md)
 
-[/ Running the nodes](./doc/node-run.md)
+[d/ Running the nodes](./doc/node-run.md)
 
 
 
