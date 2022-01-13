@@ -1,17 +1,18 @@
-# Docker Build Repo
-This repository contains build files for building ROS docker images to use 2 RGB cameras of Ohmnilab robots: the main camera (facing forward) and the aux camera (facing downward).
+# Docker Build 
+This repository contains build files for building ROS docker images for reading and processing sensor data.
+It's inspired by [OhmniLabs](https://gitlab.com/ohmni-sdk/docker-ohmni-rgbcamera)
+
 
 We use opensource ROS camera drivers:
 * libuvc backend: http://wiki.ros.org/libuvc_camera  
 * v4l2 backend (standalone): http://wiki.ros.org/usb_cam 
 * v4l2 backend (gstreamer): http://wiki.ros.org/gscam 
 
-Using these packages will help you quickly access the color frame directly. But there are several [limitations listed below](https://gitlab.com/ohmni-sdk/docker-ohmni-rgbcamera/-/tree/master#limitations).
 
 # Build Images
 Requirements:
- * Host enviroment: Ubuntu 18.04, amd64
- * Docker engine installed on the host machine: [Install instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+ * Host enviroment: Ubuntu 20.04, amd64
+ * Docker [Install instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 To build these images, change the _DOCKER_SERVER_ variable in the _build_all.sh_ file to your publish registry and run:
 ```
