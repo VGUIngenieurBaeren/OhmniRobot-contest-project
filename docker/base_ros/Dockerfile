@@ -21,6 +21,7 @@ RUN apt-get update && apt-get -y install \
     net-tools \
     tmux \
     wget \
+    python3-pip \
     htop && \
 
     # clear cache
@@ -83,8 +84,28 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-web-video-server &&\
     apt-get clean
 
-RUN apt-get update && apt-get install -y \
-	numpy \
+# Upgrade installed packages
+RUN apt update && apt upgrade -y && apt clean
+
+# install python 3.7.10 
+RUN apt update && \
+    apt install --no-install-recommends -y build-essential software-properties-common && \
+    add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt install --no-install-recommends -y python3.7 python3.7-dev python3.7-distutils && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
+# Register the version in alternatives (and set higher priority to 3.7)
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+
+# Upgrade pip to latest version
+RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python3 get-pip.py --force-reinstall && \
+    rm get-pip.py
+
+
+
+RUN apt-get update && pip3 install numpy \
 	scipy \
 	mediapipe && \
 	apt-get clean
