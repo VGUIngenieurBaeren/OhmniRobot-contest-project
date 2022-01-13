@@ -133,22 +133,22 @@ U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
 
 // Uncomment for debug output to the Serial stream 115200 baud
- #define DEBUG
+//#define DEBUG
 
 // Uncomment for serial print at 115200 baud
- #define USE_SERIAL
+//#define USE_SERIAL
 
 // Uncomment if you want to include results returned
 // by the original MAXIM algorithm.
 // DEBUG MUST BE DEFINED AS WELL
-// #define TEST_MAXIM_ALGORITHM
+#define TEST_MAXIM_ALGORITHM
 
 #ifdef TEST_MAXIM_ALGORITHM
 #include "algorithm.h"
 #endif
 
 // Interrupt pin
-const byte oxiInt = 13; // pin connected to MAX30102 INT
+const byte oxiInt = 4; // pin connected to MAX30102 INT
 
 uint32_t elapsedTime, timeStart;
 
@@ -171,7 +171,7 @@ void setup() {
 
   pinMode(oxiInt, INPUT);  //pin D13 connects to the interrupt output pin of the MAX30102
 
-  Wire.begin();
+    Wire.begin();
     u8g2.begin();
     u8g2.clearBuffer();
     u8g2.setFont(u8g2_font_ncenB08_tr);	// choose a suitable font
@@ -307,6 +307,7 @@ void loop() {
   int32_t n_heart_rate_maxim; //heart rate value
   int8_t  ch_hr_valid_maxim;  //indicator to show if the heart rate calculation is valid
   maxim_heart_rate_and_oxygen_saturation(aun_ir_buffer, BUFFER_SIZE, aun_red_buffer, &n_spo2_maxim, &ch_spo2_valid_maxim, &n_heart_rate_maxim, &ch_hr_valid_maxim);
+
 #if defined (DEBUG)
   Serial.println("--MX--");
   Serial.print(elapsedTime);
@@ -321,7 +322,13 @@ void loop() {
 #endif // TEST_MAXIM_ALGORITHM
 
 #ifdef TEST_MAXIM_ALGORITHM
-  if (ch_hr_valid && ch_spo2_valid || ch_hr_valid_maxim && ch_spo2_valid_maxim) {
+  if ((ch_hr_valid && ch_spo2_valid)) {
+      heartbeat_msg.bpm= n_heart_rate;
+
+      heartbeat_msg.oxygen=round(n_spo2);
+      pub_heart.publish(&heartbeat_msg);
+
+  }
 #else   // TEST_MAXIM_ALGORITHM
   if (ch_hr_valid && ch_spo2_valid) {
 #endif // TEST_MAXIM_ALGORITHM
@@ -354,16 +361,11 @@ void loop() {
 
 #ifndef USE_SERIAL
 
-    heartbeat_msg.bpm= n_heart_rate;
-    heartbeat_msg.oxygen=n_spo2;
-    pub_heart.publish(&heartbeat_msg);
+
 
 #endif // not USE_SERIAL
 
-  } // End of (ch_hr_valid && ch_spo2_valid)
+
+ // End of (ch_hr_valid && ch_spo2_valid)
   nh.spinOnce();
 }
-
-
-
-
