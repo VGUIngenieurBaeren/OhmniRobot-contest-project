@@ -1,8 +1,7 @@
 FROM ohmnihealth:base
-RUN mkdir -p root/launchmsg
-COPY launch root/launchmsg
-COPY ros_launch.sh  root/launchmsg
-COPY ros_entrypoint.sh root/launchmsg
+COPY ros_launch.sh /
+COPY ros_entrypoint.sh / 
+COPY launch/* /
 
 #Build an example
 RUN mkdir -p root/catkin_ws/src
@@ -17,9 +16,10 @@ RUN /bin/bash -c ' source /opt/ros/melodic/setup.bash; cd root/catkin_ws\
 
 RUN mkdir -p root/catkin_ws/web
 COPY web_server root/catkin_ws/web
-WORKDIR "root/catkin_ws/web"
-RUN npm install
-WORKDIR "root/launchmsg"
+RUN cd root/catkin_ws/web && npm install
+#WORKDIR "root/catkin_ws/web"
+#RUN npm install
+
 EXPOSE 8080
 EXPOSE 8181
 EXPOSE 9090

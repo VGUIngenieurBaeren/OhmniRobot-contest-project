@@ -1,4 +1,4 @@
-#!/home/rik/PycharmProjects/thermal_pub_rawdata/venv/bin/python3
+#!/usr/bin/python2.7
 import cv2 as cv
 import mediapipe as mp
 import time
