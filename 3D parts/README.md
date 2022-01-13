@@ -4,6 +4,8 @@ Ohmni Health Mount
 A mount to attach an Max30102 sensor to Ohmni Robot.
 
 <img src="Images/CAD_4.png" width="600" height="400" />
+<img src="Images/CAD_5.png" width="600" height="400" />
+
 
 ## 1. CAD Files
  - You will need  [Fusion360](https://www.autodesk.com/products/fusion-360/overview)  to open CAD file.
@@ -22,13 +24,13 @@ Filament: ABS+
 </pre>
 
 ## 3. BOM
-### 3.1 3D printed
+### 3.1) 3D printed
 | Item                     | Quantity |                     
 | ------------------------ | -------- | 
 | **Mount Front**          | 1        | 
 | **Mount Back**           | 1        | 
 | **Mount Bottom**         | 1        | 
-### 3.1 Fasteners
+### 3.2) Fasteners
 | Item                     | Quantity |                     
 | ------------------------ | -------- | 
 | M3x8  SHCS               | 1        | 
@@ -49,3 +51,10 @@ Filament: ABS+
 <img src="Images/CAD_2.png" width="640" height="480" />
 
 ## 6. Showcase
+\
+<img src="Images/CAD_9.jpg" width="640" height="480" />
+\
+<img src="Images/CAD_10.jpg" width="640" height="500" />
+<img src="Images/CAD_7.jpg" width="640" height="500" />
+<img src="Images/CAD_8.jpg" width="640" height="500" />
+<img src="Images/CAD_11.jpg" width="640" height="1200" />
