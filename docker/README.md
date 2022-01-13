@@ -25,7 +25,7 @@ This will build 2 images:
 We rebuilt these images in the [this repo](https://hub.docker.com/repository/docker/baoden/ohmni_rgbcam_ros), you could give it a try first and then build your modified version.
 
 # Basic Usage
-**Step 1:** Pull the image into the bot (Ohmni developer edition)
+**Step 1:** Pull the image onto the bot (Ohmni developer edition)
 
 Build your images or try our prebuild images, then adb or ssh to the bot, pull the image:
 ```
@@ -33,7 +33,7 @@ host computer$  adb connect [bot ip] && adb shell
 bot cli: /$ su
 bot cli: /# docker pull baoden/ohmni_rgbcam_ros:launch_ros
 ```
-**step 2:** run the image and access the main tmux session (make sure you don't open the camera by any app)
+**Step 2:** run the image and access the main tmux session (make sure you don't open the camera by any app)
 ```
 bot cli: /$ su
 bot cli: /# docker run -it --privileged --network host -v /dev:/dev  baoden/ohmni_rgbcam_ros:launch_ros bash 
@@ -126,7 +126,7 @@ The output is something like this:
 
 ![](ohmni_rgbcamera/example_draw_image/output.png)
 
-**Display result for debug**
+**Display result for debugging**
 
 To display the debug images at the above figure in a local machine, we need to connect the bot and the local machine in the same network. In __Both__ the bot and the local machine we add local IP of the bot and the local machine:
 ```
