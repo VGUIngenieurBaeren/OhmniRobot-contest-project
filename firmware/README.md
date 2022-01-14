@@ -1,6 +1,6 @@
 
 
-# Ohmni_Health Firmware
+# 1) Ohmni_Health Firmware
 
 This is firmware for communicating between OhmniHealth module (ESP32) and Ohmni Robot via Rosserial.
 ## Configurations
@@ -30,7 +30,7 @@ This is firmware for communicating between OhmniHealth module (ESP32) and Ohmni 
 
 
 
-## Building firmware
+## 2) Building firmware
 
 To build Ohmni_Health firmware you'll need  [PlatformIO](http://docs.platformio.org/en/latest/ide.html#platformio-ide). Detailed build and install instructions are posted at:
 
@@ -48,3 +48,8 @@ pio run --target clean
 ```
 pio run --target upload
 ```
+## 3) Datasheet
+* [ESP32-Dev-Kit ](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
+* [MAX30102](https://datasheets.maximintegrated.com/en/ds/MAX30102.pdf)
+* [SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf)
+* [MLX90640](https://www.melexis.com/-/media/files/documents/datasheets/mlx90640-datasheet-melexis.pdf)
