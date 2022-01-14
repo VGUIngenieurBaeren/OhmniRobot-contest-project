@@ -1,16 +1,9 @@
-FROM ros:melodic-ros-core-bionic
-
+FROM ros:noetic-ros-core-focal
+RUN apt-get update && apt-get install -y build-essential 
+    
 # install ros packages
-RUN apt-get update && apt-get install -y \
-    ros-${ROS_DISTRO}-ros-base=1.4.1-0*
-
-# install ROS essential dependencies
-# RUN apt-get update && apt-get install -y \
-#     ros-${ROS_DISTRO}-tf2 \
-#     ros-${ROS_DISTRO}-tf2-ros \
-#     ros-${ROS_DISTRO}-tf2-geometry-msgs && \
-#     # clear cache
-#     apt-get clean
+RUN apt-get update && apt-get install -y ros-noetic-ros-base=1.5.0-1* \
+    && rm -rf /var/lib/apt/lists/*
 
 
 
@@ -39,9 +32,9 @@ RUN echo "NPM: " && npm -v
 
 
 
-RUN apt-get install -y build-essential
 
-# OpenCV built default with ROS melodic, version: 3.2.0
+
+# OpenCV built wth Ros noetic
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-cv-bridge \
     ros-${ROS_DISTRO}-image-transport \
@@ -57,26 +50,7 @@ RUN apt-get update && apt-get install -y \
     # clear cache
     apt-get clean
 
-#for http://wiki.ros.org/libuvc_camera
-RUN apt-get update && apt-get install -y \
-    ros-${ROS_DISTRO}-libuvc-camera && \
-    # clear cache
-    apt-get clean
 
-#for http://wiki.ros.org/gscam
-RUN apt-get update && apt-get install -y \
-    gstreamer1.0-tools \
-    gstreamer1.0-plugins-good \
-    libgstreamer1.0-dev \ 
-    libgstreamer-plugins-base1.0-dev \
-    libgstreamer-plugins-good1.0-dev  && \
-    # clear cache
-    apt-get clean
-
-RUN apt-get update && apt-get install -y \
-    ros-${ROS_DISTRO}-gscam && \
-    # clear cache
-    apt-get clean
 
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-rosbridge-server \
@@ -87,21 +61,12 @@ RUN apt-get update && apt-get install -y \
 # Upgrade installed packages
 RUN apt update && apt upgrade -y && apt clean
 
-# install python 3.7.10 
-RUN apt update && \
-    apt install --no-install-recommends -y build-essential software-properties-common && \
-    add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt install --no-install-recommends -y python3.7 python3.7-dev python3.7-distutils && \
-    apt clean && rm -rf /var/lib/apt/lists/*
-
-# Register the version in alternatives (and set higher priority to 3.7)
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
 
 # Upgrade pip to latest version
 RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 get-pip.py --force-reinstall && \
     rm get-pip.py
+
 
 
 
