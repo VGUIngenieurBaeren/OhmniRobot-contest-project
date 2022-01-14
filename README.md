@@ -23,21 +23,19 @@ Let's begin!
 [>>> Click here <<<](./doc/requirements.md)
 
 
-## 3. Instuctions
+## 2. Instructions
 
-[a/ Hardware connections](./doc/hard-con.md)
+[a/ Firmware](./firmware/README.md)
 
-[b/ 3D mount](./3D20%parts/README.md)
+[b/ 3D printed](./3D_parts/README.md)
 
-[c/ Docker](./docker/README.md)
+[c/Building Docker Image](./docker/README.md)
 
-[d/ Running the nodes](./doc/node-run.md)
-
-
+[d/ Running ros nodes](./doc/node-run.md)
 
 
 
-## 4. Versions
+## 3. Versions
 
 [>>> Click here <<<](./doc/updates.md)
 
