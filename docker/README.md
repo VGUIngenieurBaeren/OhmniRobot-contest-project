@@ -22,6 +22,7 @@ chmod u+x build_all.sh
 ./build_all.sh
 ```
 <img src="image/docker.png" width="640" height="480" />
+<img src="image/Vue.gif" width="640" height="480" />
 
 This will build 2 images:
 * $DOCKER_SERVER:base_ros: install all necessary dependencies (ROS, OpenCV, )
@@ -47,73 +48,17 @@ Please open tmux "work" session for accessing all ros nodes and roscore.
 ```
 docker cli: /# tmux attach -t work
 ```
-By default for this image, we open the main camera: 640x480@30Hz yuyv format. Check if the image stream is already published:
-```
-docker cli: /# rostopic hz /main_cam/image_raw
-
-## output something like this:
-subscribed to [/main_cam/image_raw]
-average rate: 29.896
-	min: 0.031s max: 0.037s std dev: 0.00192s window: 30
-average rate: 29.826
-	min: 0.031s max: 0.037s std dev: 0.00197s window: 60
-average rate: 29.846
-	min: 0.031s max: 0.037s std dev: 0.00196s window: 90
-average rate: 29.843
-	min: 0.031s max: 0.037s std dev: 0.00196s window: 119
-average rate: 29.851
-```
-We provided several launch files of different packages in the root dirrectory of the containner, you could try these and change the default launch code (_/ros_launch.sh_).
-# Example: write a simple ROS node to process the stream
-**Requirement**: 
-
-please head to http://wiki.ros.org/ROS/Tutorials to complete basic tutorials of how to create a workspace, a ROS node that subcribe to the image stream
-
-We made a simple example (source code in the directory __example_draw_image__) for processing the main camera stream in the workspace, you could take a look in the source code. To run this example:
-```
-# source enviroment variables
-docker cli: /# source ~/catkin_ws/devel/setup.bash
-# to run the example
-docker cli: /# rosrun example_draw_image example_draw_image input_image:=/main_cam/image_raw
-```
-**Code explain**: 
-
-the source code in this file: ~/catkin_ws/src/example_draw_image/src/example_draw_image.cpp
+By default for this image, we open the main camera: 640x480@30Hz uyuv format. Check if the image stream is already published:
 ```
 
-```
-Basicly we create a [image transport object](http://wiki.ros.org/image_transport) which is simliar to [a standard ROS publisher and subcriber](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber) to handle subcribe an image topic (/input_image) and publish an processed image topic (/output_image). 
 
-The output is something like this:
 
-![](ohmni_rgbcamera/example_draw_image/output.png)
-
-**Display result for debugging**
-
-To display the debug images at the above figure in a local machine, we need to connect the bot and the local machine in the same network. In __Both__ the bot and the local machine we add local IP of the bot and the local machine:
-```
-#In the bot and the local machine, file /etc/hosts, add 2 IP and hostname. Use tools like ifconfig to get the IP
-[bot ip]            [bot_name]
-[local machine ip]  [local_machine_name]
-```
-To check the connectivity, you could go through checking steps in [this document](http://wiki.ros.org/ROS/NetworkSetup) with 2 machine names: [bot_name] and [local_machine_name]
-
-If connectivity is good, then you need to export necessary info to use any ROS tools (e.g. rviz, rqt) in the local machine as the same environment as the bot machine.
 
 ```
-# export necessary info
-In the local machine> export ROS_HOSTNAME=[local_machine_name]
-In the local machine> export ROS_MASTER_URI=http://[bot_name]:11311
 
-#After running the docker below, free to access topic/service from the bot machine (required export above info for each new terminal), for example:
-# list all available topic
-In the local machine> rostopic list
-# run visualization tool
-In the local machine> rviz
-```
-Then use [rviz](http://wiki.ros.org/rviz) to display /input_image and /output_iamge
 
 # Limitations
+1. The Ohmni Health Docker 
 1. Because 2 cameras of the bot are connected to a usb hub 2.0, the OS limits the bandwidth so you can't not get 2 streams at hight resolutions. Some combinations we tested will work (for v4l2) such as:
 * 2 streams 320x240@30Hz yuyv
 * 1 stream 1280x1024@30Hz mjpg + 1 stream 320x240@30Hz yuyv
