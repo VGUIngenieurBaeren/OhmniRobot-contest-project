@@ -2,6 +2,7 @@
   <div class="camera">
     <div class="name">{{ title }}</div>
     <!-- Begin of Root Component -->
+    <img src="http://localhost:8181/stream?topic=/main_cam/image_raw"/>
     <video class="feed"></video>
     <!-- End of Root Component -->
   </div>

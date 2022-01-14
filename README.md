@@ -6,6 +6,7 @@ Objective: To provide a local-hosted webpage, accessible by OhmniRobot via its a
 In this file will you find prerequisite on hardwares, middlewares and softwares installation along with their purposes; instructions on how to use source code files and what outputs to expect from them.
 
 Let's begin!
+<img src="./figures/vue_ohmni.png" width="756" height="1008" />
 
 
 ## Features
