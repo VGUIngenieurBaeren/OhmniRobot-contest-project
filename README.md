@@ -20,6 +20,9 @@ Let's begin!
 
 ## 1. Requirements
 
+
+<img src="./figures/Diagram.png" width="1185" height="791" />
+
 [>>> Click here <<<](./doc/requirements.md)
 
 
