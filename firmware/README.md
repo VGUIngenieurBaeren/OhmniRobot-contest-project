@@ -4,7 +4,7 @@
 
 This is firmware for communicating between OhmniHealth module (ESP32) and Ohmni Robot via Rosserial.
 ## Configurations
-<img src="datasheet/Power_Diagram.png" width="640" height="480" />
+<img src="wiring/Power_Diagram.png" width="640" height="480" />
  
  ### a) Ohmni Health
 ```
