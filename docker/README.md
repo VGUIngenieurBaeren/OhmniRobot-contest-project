@@ -21,17 +21,18 @@ To build these images, change the _DOCKER_SERVER_ variable in the _build_all.sh_
 chmod u+x build_all.sh
 ./build_all.sh
 ```
+<img src="image/docker.png" width="640" height="480" />
 
 This will build 2 images:
 * $DOCKER_SERVER:base_ros: install all necessary dependencies (ROS, OpenCV, )
 * $DOCKER_SERVER:launch_ros: add launch files and deploy scripts
 
-Prebuilt image has been built in the [this repo](https://hub.docker.com/r/vguingbaeren/ohmni_health), you could push and try it on Ohmni Robot.
+Prebuilt image has been built in the [this repo](https://hub.docker.com/repository/docker/vguingbaeren/ohmni_contest), you could push and try it on Ohmni Robot.
 
 # Basic Usage
 **Step 1:** Pull the image onto the bot (Ohmni developer edition)
 
-Build your images or try our prebuild images, then adb or ssh to the bot, pull the image:
+Build your images or try our prebuild images [Ohmni_Contest](docker pull vguingbaeren/ohmni_contest:launch), then adb or ssh to the bot, pull the image:
 ```
 host computer$  adb connect [bot ip] && adb shell
 bot cli: /$ su
@@ -40,9 +41,9 @@ bot cli: /# docker pull vguingbaeren/ohmni_health:launch
 **Step 2:** run the image and access the main tmux session (make sure you don't open the camera by any app)
 ```
 bot cli: /$ su
-bot cli: /# docker run -it --privileged --network host -v /dev:/dev  baoden/ohmni_rgbcam_ros:launch_ros bash 
+bot cli: /# docker run -it --privileged --network host -v /dev:/dev  vguingbaeren/ohmni_contest:launch 
 ```
-You now accessed the docker container CLI, you can access the tmux session where all nodes and roscore are running
+Please open tmux "work" session for accessing all ros nodes and roscore.
 ```
 docker cli: /# tmux attach -t work
 ```
