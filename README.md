@@ -29,7 +29,7 @@ Let's begin!
 
 [b/ 3D printed](./3D_parts/README.md)
 
-[c/Building Docker Image](./docker/README.md)
+[c/ Building Docker Image](./docker/README.md)
 
 [d/ Running ros nodes](./doc/node-run.md)
 
