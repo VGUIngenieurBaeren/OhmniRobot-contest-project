@@ -13,8 +13,6 @@ tmux send-keys "roscore" C-m
 tmux selectp -t 0
 tmux splitw -h -p 60
 tmux send-keys "sleep 5; roslaunch /maincam_v4l2.launch" C-m
-tmux send-keys "sleep 5;roslaunch heartbeat_ros ohmni_heartbeat.launch" C-m
-
 tmux selectp -t 0
 tmux splitw -v -p 50
 tmux send-keys "htop" C-m

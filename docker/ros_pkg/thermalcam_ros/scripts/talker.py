@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3.7
 import cv2 as cv
 import mediapipe as mp
 import time
@@ -35,7 +35,7 @@ class FaceDetector:
 
 def talker():
 
-    cap = cv.VideoCapture(0)
+    cap = cv.VideoCapture('/dev/usb/video4linux1-2.3')
     detector = FaceDetector()
 
     count = 0
