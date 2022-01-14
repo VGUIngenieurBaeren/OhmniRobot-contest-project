@@ -99,9 +99,7 @@ rosrun thermalcam_ros face_temperature_publisher.py
 
 
 # Limitations
-1. The Ohmni Health Docker 
-
-1) ROM
-2) Camera bandwidth
-3) 
+1) Ohmni robot ROM: Lacking of space since the Ohmni has used up almost all ROM size, and our docker can't be pushed onto it fully.
+2) Camera bandwidth limitation and cannot run both cameras (main_cam and aux_cam) at the same time. 
+3) The modules we are using, are just industrial technological modules, they do not meet the requirements of medical devices.
 
