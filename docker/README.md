@@ -1,38 +1,43 @@
-# Docker Build Repo
-This repository contains build files for building ROS docker images to use 2 RGB cameras of Ohmnilab robots: the main camera (facing forward) and the aux camera (facing downward).
+# Docker Build 
+This repository contains build files for building ROS docker images for reading and processing sensor data.
+It's inspired by [OhmniLabs](https://gitlab.com/ohmni-sdk/docker-ohmni-rgbcamera)
 
-We use opensource ROS camera drivers:
+
+Dependencies:
 * libuvc backend: http://wiki.ros.org/libuvc_camera  
 * v4l2 backend (standalone): http://wiki.ros.org/usb_cam 
 * v4l2 backend (gstreamer): http://wiki.ros.org/gscam 
-
-Using these packages will help you quickly access the color frame directly. But there are several [limitations listed below](https://gitlab.com/ohmni-sdk/docker-ohmni-rgbcamera/-/tree/master#limitations).
+* Web_video_server: http://wiki.ros.org/web_video_server
+* Ros bridge: http://wiki.ros.org/rosbridge_suite
+* Ros serial: http://wiki.ros.org/rosserial
 
 # Build Images
 Requirements:
- * Host enviroment: Ubuntu 18.04, amd64
- * Docker engine installed on the host machine: [Install instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+ * Host enviroment: Ubuntu 20.04, amd64
+ * Docker [Install instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 To build these images, change the _DOCKER_SERVER_ variable in the _build_all.sh_ file to your publish registry and run:
 ```
-in the repo> ./build_all.sh
+chmod u+x build_all.sh
+./build_all.sh
 ```
+
 This will build 2 images:
 * $DOCKER_SERVER:base_ros: install all necessary dependencies (ROS, OpenCV, )
 * $DOCKER_SERVER:launch_ros: add launch files and deploy scripts
 
-We rebuilt these images in the [this repo](https://hub.docker.com/repository/docker/baoden/ohmni_rgbcam_ros), you could give it a try first and then build your modified version.
+Prebuilt image has been built in the [this repo](https://hub.docker.com/r/vguingbaeren/ohmni_health), you could push and try it on Ohmni Robot.
 
 # Basic Usage
-**Step 1:** Pull the image into the bot (Ohmni developer edition)
+**Step 1:** Pull the image onto the bot (Ohmni developer edition)
 
 Build your images or try our prebuild images, then adb or ssh to the bot, pull the image:
 ```
 host computer$  adb connect [bot ip] && adb shell
 bot cli: /$ su
-bot cli: /# docker pull baoden/ohmni_rgbcam_ros:launch_ros
+bot cli: /# docker pull vguingbaeren/ohmni_health:launch
 ```
-**step 2:** run the image and access the main tmux session (make sure you don't open the camera by any app)
+**Step 2:** run the image and access the main tmux session (make sure you don't open the camera by any app)
 ```
 bot cli: /$ su
 bot cli: /# docker run -it --privileged --network host -v /dev:/dev  baoden/ohmni_rgbcam_ros:launch_ros bash 
@@ -74,50 +79,7 @@ docker cli: /# rosrun example_draw_image example_draw_image input_image:=/main_c
 
 the source code in this file: ~/catkin_ws/src/example_draw_image/src/example_draw_image.cpp
 ```
-//Include ROS 
-#include <ros/ros.h>
-#include <sensor_msgs/Image.h>
-#include <cv_bridge/cv_bridge.h>
-#include <image_transport/image_transport.h>
 
-//Global parameters
-static image_transport::ImageTransport* it;
-static image_transport::Publisher image_pub_;
-
-void imageRgbCallback(const sensor_msgs::ImageConstPtr& msg)
-{
-  ROS_INFO("image callback, size: %d x %d, encoding %s",msg->width,msg->height, msg->encoding.c_str());
-
-  // convert to OpenCV image format
-  cv_bridge::CvImagePtr cv_ptr;
-  try {
-    cv_ptr = cv_bridge::toCvCopy(msg, "rgb8");
-  } catch (cv_bridge::Exception& e) {
-    ROS_ERROR("cv_bridge exception: %s", e.what());
-    return;
-  }
-
-  // Do you amazing things
-  cv::circle(cv_ptr->image, cv::Point(msg->width/2,msg->height/2), 20, CV_RGB(255,0,255), 5);
-
-  // publish the result to orther nodes
-  image_pub_.publish(cv_ptr->toImageMsg());
-}
-
-int  main (int argc, char** argv)
-{
-  ros::init(argc, argv, "example_draw_image");
-  ros::NodeHandle nh;
-  it = new image_transport::ImageTransport(nh);
-
-  image_transport::TransportHints hints("raw", ros::TransportHints(), nh);
-  image_transport::Subscriber cam_rgb_sub = it -> subscribe("input_image", 10, &imageRgbCallback, hints);
-  image_pub_ = it->advertise("output_image", 1);
-
-  ROS_INFO("Start example_draw_image node");
-  ros::spin();
-  return 0;
-}
 ```
 Basicly we create a [image transport object](http://wiki.ros.org/image_transport) which is simliar to [a standard ROS publisher and subcriber](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber) to handle subcribe an image topic (/input_image) and publish an processed image topic (/output_image). 
 
@@ -125,7 +87,7 @@ The output is something like this:
 
 ![](ohmni_rgbcamera/example_draw_image/output.png)
 
-**Display result for debug**
+**Display result for debugging**
 
 To display the debug images at the above figure in a local machine, we need to connect the bot and the local machine in the same network. In __Both__ the bot and the local machine we add local IP of the bot and the local machine:
 ```
